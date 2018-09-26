@@ -1,0 +1,14 @@
+
+<router-outlet></router-outlet>
+<button (click)="addEvent()">Generate event</button>
+<input type="file" (change)="onChange($event)"/>
+<!--button((click)="generateCalendar()") Generate calendar-->
+<div class="dataBlock" *ngFor="let key of eventListKeys"><span>{{ eventList[key].eventDate }}</span><img [src]="eventList[key].imageSrc"/>
+  <button (click)="deleteEvent(key, eventList[key].imageKey)">Delete</button>
+</div>
+<h2>Users info</h2>
+<form formGroup="userAccountForm">
+  <mat-form-field>
+    <input matInput="matInput" placeholder="First name" spellcheck="false" formControlName="userName"/>
+  </mat-form-field>
+</form>
