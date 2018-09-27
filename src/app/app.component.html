@@ -45,7 +45,7 @@
         </div>
       </button>
       <label>
-        <input type="file" name="myfile" (input)="onChangeImage($event)"/>
+        <input type="file" accept=".png, .jpg, .jpeg" name="myfile" (input)="onChangeImage($event)"/>
       </label>
     </div><span *ngIf="!uploadedPhoto">Upload your photo</span>
     <mat-form-field>

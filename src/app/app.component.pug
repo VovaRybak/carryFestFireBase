@@ -34,7 +34,7 @@ h2 Users info
         .overlay
           button((click)="removePhoto($event)") Delete
       label
-        input(type="file", name="myfile", (input)="onChangeImage($event)")
+        input(type="file", accept=".png, .jpg, .jpeg", name="myfile", (input)="onChangeImage($event)")
     span(*ngIf="!uploadedPhoto") Upload your photo
     mat-form-field
       input(matInput, placeholder="Email", type="email", spellcheck="false", formControlName="email" )
