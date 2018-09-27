@@ -1,14 +1,52 @@
 
 <router-outlet></router-outlet>
-<button (click)="addEvent()">Generate event</button>
-<input type="file" (change)="onChange($event)"/>
-<!--button((click)="generateCalendar()") Generate calendar-->
-<div class="dataBlock" *ngFor="let key of eventListKeys"><span>{{ eventList[key].eventDate }}</span><img [src]="eventList[key].imageSrc"/>
-  <button (click)="deleteEvent(key, eventList[key].imageKey)">Delete</button>
+<carryFest-loader-spinner></carryFest-loader-spinner>
+<!--button((click)="addEvent()") Generate event-->
+<!--input(type="file",(change)="onChange($event)")-->
+<!--//button((click)="generateCalendar()") Generate calendar-->
+<!--div.dataBlock(*ngFor="let key of eventListKeys")-->
+<!--  span {{ eventList[key].eventDate }}-->
+<!--  img([src]="eventList[key].imageSrc")-->
+<!--  button( (click)="deleteEvent(key, eventList[key].imageKey)" ) Delete-->
+<div class="profile" *ngIf="user"><img [src]="user.imageSrc"/>
+  <div>
+    <div>{{ user.email }}</div>
+    <div>{{ user.userID }}</div>
+  </div>
 </div>
 <h2>Users info</h2>
-<form formGroup="userAccountForm">
-  <mat-form-field>
-    <input matInput="matInput" placeholder="First name" spellcheck="false" formControlName="userName"/>
-  </mat-form-field>
-</form>
+<div class="forms">
+  <form class="form" [formGroup]="userAuthForm">
+    <mat-form-field>
+      <input matInput="matInput" placeholder="Email" type="email" spellcheck="false" formControlName="email"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput="matInput" placeholder="Password" type="password" spellcheck="false" formControlName="password"/>
+    </mat-form-field>
+    <button (click)="authorize()">Auth</button>
+  </form>
+  <form class="form" [formGroup]="userSignUpForm">
+    <div class="upload-btn-wrapper">
+      <button class="btn" *ngIf="!uploadedPhoto">+</button>
+      <button class="btn uploaded" *ngIf="uploadedPhoto" [ngStyle]="{ 'background-image': 'url('+uploadedPhoto+')' }">
+        <div class="overlay">
+          <button (click)="removePhoto($event)">Delete</button>
+        </div>
+      </button>
+      <label>
+        <input type="file" name="myfile" (input)="onChangeImage($event)"/>
+      </label>
+    </div><span *ngIf="!uploadedPhoto">Upload your photo</span>
+    <mat-form-field>
+      <input matInput="matInput" placeholder="Email" type="email" spellcheck="false" formControlName="email"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput="matInput" placeholder="Password" type="password" spellcheck="false" formControlName="password"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput="matInput" placeholder="Repeat password" type="password" spellcheck="false" formControlName="repeatPassword"/>
+    </mat-form-field>
+    <button (click)="register()">Register</button>
+  </form>
+</div>
+<div class="dataBlock" *ngFor="let key of usersList"><img [src]="key.imageSrc"/><span>{{ key.email }}</span><span>{{ key.userID }}</span></div>

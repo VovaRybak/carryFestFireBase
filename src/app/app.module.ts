@@ -12,11 +12,16 @@ import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/storag
 import {FilesOperationsService} from './services/files-operations.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatFormField, MatFormFieldModule} from '@angular/material';
+import {MatFormField, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.component';
+import {LoaderSpinnerService} from './loader-spinner/loader-spinner.service';
+import {AuthService} from './services/auth.service';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +31,11 @@ import {MatFormField, MatFormFieldModule} from '@angular/material';
     AngularFireStorageModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    AngularFireAuthModule
   ],
-  providers: [FirebaseService, FilesOperationsService],
+  providers: [FirebaseService, FilesOperationsService, LoaderSpinnerService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

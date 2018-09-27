@@ -1,12 +1,42 @@
 router-outlet
-button((click)="addEvent()") Generate event
-input(type="file",(change)="onChange($event)")
-//button((click)="generateCalendar()") Generate calendar
-div.dataBlock(*ngFor="let key of eventListKeys")
-  span {{ eventList[key].eventDate }}
-  img([src]="eventList[key].imageSrc")
-  button( (click)="deleteEvent(key, eventList[key].imageKey)" ) Delete
+carryFest-loader-spinner
+//button((click)="addEvent()") Generate event
+//input(type="file",(change)="onChange($event)")
+////button((click)="generateCalendar()") Generate calendar
+//div.dataBlock(*ngFor="let key of eventListKeys")
+//  span {{ eventList[key].eventDate }}
+//  img([src]="eventList[key].imageSrc")
+//  button( (click)="deleteEvent(key, eventList[key].imageKey)" ) Delete
+.profile(*ngIf="user")
+  img([src]="user.imageSrc")
+  div
+    div {{ user.email }}
+    div {{ user.userID }}
 h2 Users info
-form(formGroup="userAccountForm")
-  mat-form-field
-    input(matInput placeholder="First name" spellcheck="false" formControlName="userName" )
+.forms
+  form.form([formGroup]="userAuthForm")
+    mat-form-field
+      input(matInput, placeholder="Email", type="email", spellcheck="false", formControlName="email" )
+    mat-form-field
+      input(matInput, placeholder="Password", type="password", spellcheck="false", formControlName="password" )
+    button((click)="authorize()") Auth
+  form.form([formGroup]="userSignUpForm")
+    .upload-btn-wrapper
+      button(*ngIf="!uploadedPhoto").btn +
+      button(*ngIf="uploadedPhoto", [ngStyle] = "{ 'background-image': 'url('+uploadedPhoto+')' }").btn.uploaded
+        .overlay
+          button((click)="removePhoto($event)") Delete
+      label
+        input(type="file", name="myfile", (input)="onChangeImage($event)")
+    span(*ngIf="!uploadedPhoto") Upload your photo
+    mat-form-field
+      input(matInput, placeholder="Email", type="email", spellcheck="false", formControlName="email" )
+    mat-form-field
+      input(matInput, placeholder="Password", type="password", spellcheck="false", formControlName="password" )
+    mat-form-field
+      input(matInput, placeholder="Repeat password", type="password", spellcheck="false", formControlName="repeatPassword" )
+    button((click)="register()") Register
+div.dataBlock(*ngFor="let key of usersList")
+  img([src]="key.imageSrc")
+  span {{ key.email }}
+  span {{ key.userID }}
