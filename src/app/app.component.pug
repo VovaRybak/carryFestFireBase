@@ -12,6 +12,13 @@ carryFest-loader-spinner
   div
     div {{ user.email }}
     div {{ user.userID }}
+  .upload-btn-wrapper
+    button(*ngIf="!uploadedPhoto").btn +
+    button(*ngIf="uploadedPhoto", [ngStyle] = "{ 'background-image': 'url('+uploadedPhoto+')' }").btn.uploaded
+      .overlay
+        button((click)="removePhoto($event)") Delete
+    label
+      input(type="file", name="myfile", (input)="onChangeImage($event)")
 h2 Users info
 .forms
   form.form([formGroup]="userAuthForm")

@@ -13,6 +13,17 @@
     <div>{{ user.email }}</div>
     <div>{{ user.userID }}</div>
   </div>
+  <div class="upload-btn-wrapper">
+    <button class="btn" *ngIf="!uploadedPhoto">+</button>
+    <button class="btn uploaded" *ngIf="uploadedPhoto" [ngStyle]="{ 'background-image': 'url('+uploadedPhoto+')' }">
+      <div class="overlay">
+        <button (click)="removePhoto($event)">Delete</button>
+      </div>
+    </button>
+    <label>
+      <input type="file" name="myfile" (input)="onChangeImage($event)"/>
+    </label>
+  </div>
 </div>
 <h2>Users info</h2>
 <div class="forms">
