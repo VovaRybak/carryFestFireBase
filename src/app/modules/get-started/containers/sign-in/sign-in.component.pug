@@ -1,0 +1,8 @@
+.container
+  .sign-in-header {{"GET_STARTED.SIGN_IN_HEADER" | translate}}
+  form.sign-in-form([formGroup]='signInForm')
+    mat-form-field.sign-in-form--field
+      input(matInput, [placeholder]="'GET_STARTED.EMAIL' | translate", type="email", spellcheck="false", formControlName="email" )
+    mat-form-field.sign-in-form--field
+      input(matInput, [placeholder]="'GET_STARTED.PASSWORD' | translate", type="password", spellcheck="false", formControlName="password" )
+    button.sign-in-form--submit((click)="tryToLogin()") {{"GET_STARTED.SIGN_IN" | translate}}

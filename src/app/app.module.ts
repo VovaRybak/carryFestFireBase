@@ -17,6 +17,15 @@ import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.componen
 import {LoaderSpinnerService} from './loader-spinner/loader-spinner.service';
 import {AuthService} from './services/auth.service';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { FacebookModule } from 'ngx-facebook';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AuthGuard} from './guards/auth.guard';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -25,17 +34,26 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
   ],
   imports: [
     BrowserModule,
+    FacebookModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
-  providers: [FirebaseService, FilesOperationsService, LoaderSpinnerService, AuthService],
+  providers: [FirebaseService, FilesOperationsService, LoaderSpinnerService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

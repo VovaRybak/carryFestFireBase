@@ -8,56 +8,43 @@
 <!--  span {{ eventList[key].eventDate }}-->
 <!--  img([src]="eventList[key].imageSrc")-->
 <!--  button( (click)="deleteEvent(key, eventList[key].imageKey)" ) Delete-->
-<div class="profile" *ngIf="user"><img [src]="user.imageSrc"/>
-  <div>
-    <div>{{ user.email }}</div>
-    <div>{{ user.userID }}</div>
-  </div>
-  <div class="upload-btn-wrapper">
-    <button class="btn" *ngIf="!uploadedPhoto">+</button>
-    <button class="btn uploaded" *ngIf="uploadedPhoto" [ngStyle]="{ 'background-image': 'url('+uploadedPhoto+')' }">
-      <div class="overlay">
-        <button (click)="removePhoto($event)">Delete</button>
-      </div>
-    </button>
-    <label>
-      <input type="file" name="myfile" (input)="onChangeImage($event)"/>
-    </label>
-  </div>
-</div>
-<h2>Users info</h2>
-<div class="forms">
-  <form class="form" [formGroup]="userAuthForm">
-    <mat-form-field>
-      <input matInput="matInput" placeholder="Email" type="email" spellcheck="false" formControlName="email"/>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput="matInput" placeholder="Password" type="password" spellcheck="false" formControlName="password"/>
-    </mat-form-field>
-    <button (click)="authorize()">Auth</button>
-  </form>
-  <form class="form" [formGroup]="userSignUpForm">
-    <div class="upload-btn-wrapper">
-      <button class="btn" *ngIf="!uploadedPhoto">+</button>
-      <button class="btn uploaded" *ngIf="uploadedPhoto" [ngStyle]="{ 'background-image': 'url('+uploadedPhoto+')' }">
-        <div class="overlay">
-          <button (click)="removePhoto($event)">Delete</button>
-        </div>
-      </button>
-      <label>
-        <input type="file" accept=".png, .jpg, .jpeg" name="myfile" (input)="onChangeImage($event)"/>
-      </label>
-    </div><span *ngIf="!uploadedPhoto">Upload your photo</span>
-    <mat-form-field>
-      <input matInput="matInput" placeholder="Email" type="email" spellcheck="false" formControlName="email"/>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput="matInput" placeholder="Password" type="password" spellcheck="false" formControlName="password"/>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput="matInput" placeholder="Repeat password" type="password" spellcheck="false" formControlName="repeatPassword"/>
-    </mat-form-field>
-    <button (click)="register()">Register</button>
-  </form>
-</div>
-<div class="dataBlock" *ngFor="let key of usersList"><img [src]="key.imageSrc"/><span>{{ key.email }}</span><span>{{ key.userID }}</span></div>
+<!--.profile(*ngIf="user")-->
+<!--  img([src]="user.imageSrc")-->
+<!--  div-->
+<!--    div {{ user.email }}-->
+<!--    div {{ user.userID }}-->
+<!--  .upload-btn-wrapper-->
+<!--    button(*ngIf="!uploadedPhoto").btn +-->
+<!--    button(*ngIf="uploadedPhoto", [ngStyle] = "{ 'background-image': 'url('+uploadedPhoto+')' }").btn.uploaded-->
+<!--      .overlay-->
+<!--        button((click)="removePhoto($event)") Delete-->
+<!--    label-->
+<!--      input(type="file", name="myfile", (input)="onChangeImage($event)")-->
+<!--h2 Users info-->
+<!--.forms-->
+<!--  form.form([formGroup]="userAuthForm")-->
+<!--    mat-form-field-->
+<!--      input(matInput, placeholder="Email", type="email", spellcheck="false", formControlName="email" )-->
+<!--    mat-form-field-->
+<!--      input(matInput, placeholder="Password", type="password", spellcheck="false", formControlName="password" )-->
+<!--    button((click)="authorize()") Auth-->
+<!--  form.form([formGroup]="userSignUpForm")-->
+<!--    .upload-btn-wrapper-->
+<!--      button(*ngIf="!uploadedPhoto").btn +-->
+<!--      button(*ngIf="uploadedPhoto", [ngStyle] = "{ 'background-image': 'url('+uploadedPhoto+')' }").btn.uploaded-->
+<!--        .overlay-->
+<!--          button((click)="removePhoto($event)") Delete-->
+<!--      label-->
+<!--        input(type="file", accept=".png, .jpg, .jpeg", name="myfile", (input)="onChangeImage($event)")-->
+<!--    span(*ngIf="!uploadedPhoto") Upload your photo-->
+<!--    mat-form-field-->
+<!--      input(matInput, placeholder="Email", type="email", spellcheck="false", formControlName="email" )-->
+<!--    mat-form-field-->
+<!--      input(matInput, placeholder="Password", type="password", spellcheck="false", formControlName="password" )-->
+<!--    mat-form-field-->
+<!--      input(matInput, placeholder="Repeat password", type="password", spellcheck="false", formControlName="repeatPassword" )-->
+<!--    button((click)="register()") Register-->
+<!--div.dataBlock(*ngFor="let key of usersList")-->
+<!--  img([src]="key.imageSrc")-->
+<!--  span {{ key.email }}-->
+<!--  span {{ key.userID }}-->

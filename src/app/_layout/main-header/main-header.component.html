@@ -1,0 +1,15 @@
+
+<div class="main-header-container">
+  <div class="main-header-wrapper">
+    <div class="main-header-language language">{{ "HEADER.LANGUAGE_CHOOSE" | translate }}:
+      <mat-select class="chosen-language" panelClass="languageSwitch" [(ngModel)]="chosenLanguage" [ngClass]="chosenLanguage" (change)="changeLanguage($event.value)">
+        <mat-option *ngFor="let language of languagesList" [ngClass]="language" [value]="language">{{language}}</mat-option>
+      </mat-select>
+    </div>
+    <div class="main-header-logo">Carry Fest</div>
+    <div class="main-header-profile">
+      <div class="sign-in" [routerLink]="['/startup/sign-in']">{{ "HEADER.SIGN_IN" | translate}} |</div>
+      <div class="sign-up" [routerLink]="['/startup/sign-up']">{{ "HEADER.SIGN_UP" | translate}}</div>
+    </div>
+  </div>
+</div>

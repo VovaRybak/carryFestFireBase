@@ -1,0 +1,14 @@
+{
+  "HEADER":{
+    "PROFILE": "Profil",
+    "LANGUAGE_CHOOSE": "Wybierz język",
+    "SIGN_IN": "Zaloguj się",
+    "SIGN_UP": "Rejestracja"
+  },
+  "GET_STARTED":{
+    "SIGN_IN": "Zalogovat się",
+    "SIGN_IN_HEADER": "Witamy spowrotem",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Hasło"
+  }
+}

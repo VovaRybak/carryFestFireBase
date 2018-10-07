@@ -1,0 +1,14 @@
+{
+  "HEADER":{
+    "PROFILE": "Profile",
+    "LANGUAGE_CHOOSE": "Choose language",
+    "SIGN_IN": "Sign In",
+    "SIGN_UP": "Sign Up"
+  },
+  "GET_STARTED":{
+    "SIGN_IN": "Log in",
+    "SIGN_IN_HEADER": "Welcome back",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Password"
+  }
+}

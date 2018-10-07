@@ -1,0 +1,141 @@
+.main-header{
+  &-container{
+    width:100%;
+    background-color: #1b1b1baa;
+    font-family: 'Alegreya Sans', sans-serif;
+    color:white;
+
+  }
+  &-wrapper{
+    width:80%;
+    margin: 0 auto;
+    padding:1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    >*{
+      width:33.3%;
+    }
+  }
+  &-logo {
+    text-transform: uppercase;
+    font-family: 'Akronim', cursive;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+  }
+  &-profile{
+    display: flex;
+    justify-content: flex-end;
+    >*{
+      cursor: pointer;
+    }
+  }
+}
+.language{
+  display: flex;
+  align-items: center;
+  .mat-select{
+    width:fit-content;
+  }
+  .chosen-language{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    flex-direction: column;
+    ::ng-deep {
+      .mat-select-arrow{
+        color:white;
+      }
+      .mat-select-value {
+        width: 20px;
+        max-width: 20px !important;
+        height: 20px;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 50%;
+        cursor: pointer;
+        color:transparent!important;
+      }
+    }
+      }
+}
+::ng-deep .languageSwitch{
+  .mat-select-content{
+    background-color: #1b1b1baa;
+    color:white;
+  }
+  .mat-selected{
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  .mat-option{
+    height:30px!important;
+    line-height:30px!important;
+    color:white;
+    padding:5px;
+    &:hover{
+      background-color: rgba(0,0,0,0.2);
+    }
+    .mat-option-text{
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      font-family: 'Alegreya Sans', sans-serif;
+    }
+    .mat-option-text::before{
+      content:'';
+      width:20px;
+      height:20px;
+      margin-right: 10px;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 50%;
+      display: block;
+      cursor:pointer;
+      color:transparent!important;
+    }
+  }
+  .ua{
+    .mat-option-text::before{
+      background-image: url('../../../assets/icons/flags/ua.svg');
+    }
+  }
+  .en{
+    .mat-option-text::before{
+      background-image: url('../../../assets/icons/flags/en.svg');
+    }
+  }
+  .pl{
+    .mat-option-text::before{
+      background-image: url('../../../assets/icons/flags/pl.svg');
+    }
+  }
+  .ru{
+    .mat-option-text::before {
+      background-image: url('../../../assets/icons/flags/ru.svg');
+    }
+  }
+}
+
+.ua{
+  ::ng-deep .mat-select-value {
+    background-image: url('../../../assets/icons/flags/ua.svg');
+  }
+}
+.en{
+  ::ng-deep .mat-select-value {
+    background-image: url('../../../assets/icons/flags/en.svg');
+  }
+}
+.pl{
+  ::ng-deep .mat-select-value {
+    background-image: url('../../../assets/icons/flags/pl.svg');
+  }
+}
+.ru{
+  ::ng-deep .mat-select-value {
+    background-image: url('../../../assets/icons/flags/ru.svg');
+  }
+}

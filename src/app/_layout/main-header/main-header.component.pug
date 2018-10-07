@@ -1,0 +1,10 @@
+.main-header-container
+  .main-header-wrapper
+    .main-header-language.language {{ "HEADER.LANGUAGE_CHOOSE" | translate }}:
+      mat-select(panelClass="languageSwitch", [(ngModel)]="chosenLanguage", [ngClass]="chosenLanguage",  (change)="changeLanguage($event.value)").chosen-language
+        mat-option(*ngFor='let language of languagesList', [ngClass]="language", [value]="language") {{language}}
+    .main-header-logo Carry Fest
+    .main-header-profile
+      .sign-in([routerLink]="['/startup/sign-in']") {{ "HEADER.SIGN_IN" | translate}} |
+      .sign-up([routerLink]="['/startup/sign-up']") {{ "HEADER.SIGN_UP" | translate}}
+

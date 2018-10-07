@@ -1,0 +1,14 @@
+{
+  "HEADER":{
+    "PROFILE": "Профиль",
+    "LANGUAGE_CHOOSE": "Выберите язык",
+    "SIGN_IN": "Вход",
+    "SIGN_UP": "Регистрация"
+  },
+  "GET_STARTED":{
+    "SIGN_IN": "Войти",
+    "SIGN_IN_HEADER": "Добро пожаловать",
+    "EMAIL": "E-mail",
+    "PASSWORD": "Пароль"
+  }
+}

@@ -1,0 +1,37 @@
+.container{
+  width:320px;
+  height:280px;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  .sign-in-header{
+    padding: 15px;
+    font-size: 24px;
+    color:white;
+    background-color: #3a5fff;
+    text-align: center;
+  }
+}
+.sign-in-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  box-sizing: border-box;
+  &--field{
+    width:100%;
+  }
+  &--submit{
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: 'Alegreya Sans', sans-serif;
+    padding: 10px 30px;
+    color: white;
+    background-color: #3a5fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
