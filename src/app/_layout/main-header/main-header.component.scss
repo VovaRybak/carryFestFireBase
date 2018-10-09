@@ -30,6 +30,13 @@
     >*{
       cursor: pointer;
     }
+    .user-image{
+      width: 20px;
+      max-width: 20px !important;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
   }
 }
 .language{

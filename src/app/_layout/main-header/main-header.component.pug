@@ -5,6 +5,11 @@
         mat-option(*ngFor='let language of languagesList', [ngClass]="language", [value]="language") {{language}}
     .main-header-logo Carry Fest
     .main-header-profile
-      .sign-in([routerLink]="['/startup/sign-in']") {{ "HEADER.SIGN_IN" | translate}} |
-      .sign-up([routerLink]="['/startup/sign-up']") {{ "HEADER.SIGN_UP" | translate}}
+      .not-logged(*ngIf="!userData")
+        .sign-in([routerLink]="['/startup/sign-in']") {{ "HEADER.SIGN_IN" | translate}} |
+        .sign-up([routerLink]="['/startup/sign-up']") {{ "HEADER.SIGN_UP" | translate}}
+      .logged-user(*ngIf="userData")
+        .user-name
+        img([src]="userData['imageSrc'] ").user-image
+        .sign-up((click)="authService.logOut()", [routerLink]="['/startup/sign-in']") | {{ "HEADER.LOG_OUT" | translate}}
 

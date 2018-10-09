@@ -3,7 +3,8 @@
     "PROFILE": "Профиль",
     "LANGUAGE_CHOOSE": "Выберите язык",
     "SIGN_IN": "Вход",
-    "SIGN_UP": "Регистрация"
+    "SIGN_UP": "Регистрация",
+    "LOG_OUT": "Выход"
   },
   "GET_STARTED":{
     "SIGN_IN": "Войти",
