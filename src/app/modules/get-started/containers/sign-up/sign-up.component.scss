@@ -33,6 +33,7 @@
       width: var(--lineWidth);
       height: 100%;
       background-color: green;
+      transition: width 1s;
     }
   }
   .steps{
@@ -47,11 +48,15 @@
       width:24px;
       height: 24px;
       background-color: #fff;
-      border-radius: 50%
+      border-radius: 50%;
+      transition: .3s ease-out;
+      transition-delay: 0s;
     }
     .active{
       background-color: green;
       color:white;
+      transition: .3s ease-out;
+      transition-delay: .5s;
     }
   }
 }
