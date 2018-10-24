@@ -13,8 +13,12 @@ export class AuthService {
     this.initAuthState();
   }
   initAuthState(): void {
-    const userInfo = JSON.parse(localStorage.userInfo);
-    this._authData.next( userInfo ? userInfo : null);
+    if (localStorage.userInfo) {
+      const userInfo = JSON.parse(localStorage.userInfo);
+      this._authData.next(userInfo ? userInfo : null);
+    } else {
+      this._authData.next('');
+    }
   }
   private storeAuthData(userInfo: any): void{
     const userData = Object.assign(JSON.parse(localStorage.getItem('userInfo')), userInfo);

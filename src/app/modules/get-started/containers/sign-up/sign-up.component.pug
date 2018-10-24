@@ -1,0 +1,28 @@
+.container
+  .filling-info
+     .back-line
+       .green-line
+     .steps
+       .step(*ngFor='let stepNumber of [1,2,3]', [ngClass]="{'active': stepNumber <= currentStep}") {{stepNumber}}
+  form.wrapper([formGroup]='signUpForm')
+    .first-step.step(*ngIf='currentStep === 1')
+      .sign-up-step-form
+        mat-form-field.sign-in-form--field
+          input(matInput, [placeholder]="'GET_STARTED.EMAIL' | translate", type="email", spellcheck="false", formControlName="email" )
+        mat-form-field.sign-in-form--field
+          input(matInput, [placeholder]="'GET_STARTED.PASSWORD' | translate", type="password", spellcheck="false", formControlName="password" )
+        .button-section
+          button.sign-up-form--button.next((click)="setStep(true)") {{"GET_STARTED.NEXT" | translate}}
+    .second-step.step(*ngIf='currentStep === 2')
+      .sign-up-step-form
+        mat-form-field.sign-in-form--field
+          input(matInput, [placeholder]="'GET_STARTED.FIRST_NAME' | translate", type="text", spellcheck="false", formControlName="firstName" )
+        mat-form-field.sign-in-form--field
+          input(matInput, [placeholder]="'GET_STARTED.LAST_NAME' | translate", type="text", spellcheck="false", formControlName="lastName" )
+        .button-section
+          button.sign-up-form--button.back((click)="setStep(false)") {{"GET_STARTED.BACK" | translate}}
+          button.sign-up-form--button.next((click)="setStep(true)") {{"GET_STARTED.NEXT" | translate}}
+    .third-step.step(*ngIf='currentStep === 3')
+      .sign-up-step-form
+        .button-section
+          button.sign-up-form--button.back((click)="setStep(false)") {{"GET_STARTED.BACK" | translate}}

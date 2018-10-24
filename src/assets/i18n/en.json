@@ -10,7 +10,8 @@
     "SIGN_IN": "Log in",
     "SIGN_IN_HEADER": "Welcome back",
     "EMAIL": "E-mail",
-    "PASSWORD": "Password"
-
+    "PASSWORD": "Password",
+    "NEXT": "Next",
+    "BACK": "Back"
   }
 }
