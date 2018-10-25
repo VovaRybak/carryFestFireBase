@@ -1,0 +1,17 @@
+
+<div class="container">
+  <div class="wrapper">
+    <div class="middle-part" *ngIf="uploadedPhoto" [ngStyle]="{ 'background-image': 'url('+uploadedPhoto+')' }">
+      <div class="overlay">
+        <button (click)="removePhoto($event)">-</button>
+      </div>
+    </div>
+    <div class="middle-part" *ngIf="!uploadedPhoto">
+      <div class="middle-part-plus">+</div>
+      <div class="middle-part-label">Upload file</div>
+      <label class="middle-part-label">
+        <input type="file" name="myfile" (input)="onChangeImage($event)"/>
+      </label>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.container
+  .wrapper
+    .middle-part(*ngIf="uploadedPhoto", [ngStyle]="{ 'background-image': 'url('+uploadedPhoto+')' }")
+      .overlay
+        button((click)="removePhoto($event)") -
+    .middle-part(*ngIf="!uploadedPhoto")
+      .middle-part-plus +
+      .middle-part-label Upload file
+      label.middle-part-label
+        input(type="file", name="myfile", (input)="onChangeImage($event)")

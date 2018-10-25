@@ -9,6 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import {StartupService} from './services/startup.service';
+import {SharedModule} from '../../_shared/shared.module';
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
 const routes: Routes = [
   { path: 'startup', component: GetStartedComponent, children: [
@@ -26,7 +28,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     TranslateModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    GooglePlaceModule,
+    SharedModule
   ],
   declarations: [GetStartedComponent, SignInComponent, SignUpComponent],
   bootstrap: [GetStartedComponent],

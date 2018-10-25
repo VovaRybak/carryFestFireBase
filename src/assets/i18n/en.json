@@ -12,6 +12,13 @@
     "EMAIL": "E-mail",
     "PASSWORD": "Password",
     "NEXT": "Next",
-    "BACK": "Back"
+    "BACK": "Back",
+    "REGISTRATION": "Registration",
+    "TELL_ABOUT_YOURSELF": "Tell us about yourself",
+    "WHAT_DO_YOU_DO": "What do you do ?",
+    "FIRST_NAME":"First name",
+    "LAST_NAME": "Last name",
+    "DESCRIBE": "Describe your service",
+    "SERVICE_TYPE": "Choose type of service"
   }
 }

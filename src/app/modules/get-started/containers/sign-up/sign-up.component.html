@@ -10,37 +10,53 @@
   </div>
   <form class="wrapper" [formGroup]="signUpForm">
     <div class="first-step step" *ngIf="currentStep === 1">
+      <div class="sign-up-header">{{ "GET_STARTED.REGISTRATION" | translate }}</div>
       <div class="sign-up-step-form">
+        <div class="first-step-logo">Welcome to
+          <div class="first-step-logo--icon">CarryFest</div>
+        </div>
         <mat-form-field class="sign-in-form--field">
           <input matInput="matInput" [placeholder]="'GET_STARTED.EMAIL' | translate" type="email" spellcheck="false" formControlName="email"/>
         </mat-form-field>
         <mat-form-field class="sign-in-form--field">
           <input matInput="matInput" [placeholder]="'GET_STARTED.PASSWORD' | translate" type="password" spellcheck="false" formControlName="password"/>
         </mat-form-field>
-        <div class="button-section">
-          <button class="sign-up-form--button next" (click)="setStep(true)">{{"GET_STARTED.NEXT" | translate}}</button>
-        </div>
+      </div>
+      <div class="button-section">
+        <button class="sign-up-form--button next" (click)="setStep(true)">{{"GET_STARTED.NEXT" | translate}}</button>
       </div>
     </div>
     <div class="second-step step" *ngIf="currentStep === 2">
+      <div class="sign-up-header">{{ "GET_STARTED.TELL_ABOUT_YOURSELF" | translate }}</div>
       <div class="sign-up-step-form">
+        <carryFest-image-upload></carryFest-image-upload>
         <mat-form-field class="sign-in-form--field">
           <input matInput="matInput" [placeholder]="'GET_STARTED.FIRST_NAME' | translate" type="text" spellcheck="false" formControlName="firstName"/>
         </mat-form-field>
         <mat-form-field class="sign-in-form--field">
           <input matInput="matInput" [placeholder]="'GET_STARTED.LAST_NAME' | translate" type="text" spellcheck="false" formControlName="lastName"/>
         </mat-form-field>
-        <div class="button-section">
-          <button class="sign-up-form--button back" (click)="setStep(false)">{{"GET_STARTED.BACK" | translate}}</button>
-          <button class="sign-up-form--button next" (click)="setStep(true)">{{"GET_STARTED.NEXT" | translate}}</button>
-        </div>
+      </div>
+      <div class="button-section">
+        <button class="sign-up-form--button back" (click)="setStep(false)">{{"GET_STARTED.BACK" | translate}}</button>
+        <button class="sign-up-form--button next" (click)="setStep(true)">{{"GET_STARTED.NEXT" | translate}}</button>
       </div>
     </div>
     <div class="third-step step" *ngIf="currentStep === 3">
+      <div class="sign-up-header">{{ "GET_STARTED.WHAT_DO_YOU_DO" | translate }}</div>
       <div class="sign-up-step-form">
-        <div class="button-section">
-          <button class="sign-up-form--button back" (click)="setStep(false)">{{"GET_STARTED.BACK" | translate}}</button>
-        </div>
+        <mat-form-field class="sign-in-form--field">
+          <input ngx-google-places-autocomplete="ngx-google-places-autocomplete" matInput="matInput" formControlName="lastName" [placeholder]="'Location'" [options]="{ language:&quot;ua&quot; ,componentRestrictions: {country: &quot;ua&quot;}}" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+        </mat-form-field>
+        <mat-form-field class="sign-in-form--field">
+          <input matInput="matInput" [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate"/>
+        </mat-form-field>
+        <mat-form-field class="sign-in-form--field">
+          <textarea matInput="matInput" [placeholder]="'GET_STARTED.DESCRIBE' | translate" mat-autosize="true"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="button-section">
+        <button class="sign-up-form--button back" (click)="setStep(false)">{{"GET_STARTED.BACK" | translate}}</button>
       </div>
     </div>
   </form>

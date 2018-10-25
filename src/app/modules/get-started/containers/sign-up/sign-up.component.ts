@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {GooglePlaceDirective} from 'ngx-google-places-autocomplete';
+import {Address} from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'carryFest-sign-up',
@@ -27,6 +29,7 @@ export class SignUpComponent implements OnInit {
       serviceType: ['',  [Validators.required]],
       serviceLocation: ['',  [Validators.required]],
       phoneNumber: ['',  [Validators.required]],
+      photo: ['',  [Validators.required]],
     });
   }
 
@@ -43,5 +46,11 @@ export class SignUpComponent implements OnInit {
   }
   async delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  @ViewChild('placesRef') placesRef: GooglePlaceDirective;
+  public handleAddressChange(address: Address) {
+    console.log(address);
+    // Do some stuff
   }
 }
