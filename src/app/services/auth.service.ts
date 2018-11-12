@@ -20,8 +20,9 @@ export class AuthService {
       this._authData.next('');
     }
   }
-  private storeAuthData(userInfo: any): void{
+  private storeAuthData(userInfo: any): void {
     const userData = Object.assign(JSON.parse(localStorage.getItem('userInfo')), userInfo);
+    this._authData.next(userData ? userData : null);
     localStorage.setItem('userInfo', JSON.stringify(userData));
   }
   setAuthData(user: any): void {
