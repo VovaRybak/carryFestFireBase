@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ export class ImageUploadComponent implements OnInit {
   public fileImage;
   public imageInput;
   public uploadedPhoto;
+  @Output() uploadImage: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -24,6 +25,7 @@ export class ImageUploadComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (events: any) => {
       this.uploadedPhoto = events.target.result;
+      this.uploadImage.emit(this.fileImage);
     };
   }
   removePhoto(event) {

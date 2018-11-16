@@ -9,7 +9,7 @@
         .sign-in([routerLink]="['/startup/sign-in']") {{ "HEADER.SIGN_IN" | translate}} |
         .sign-up([routerLink]="['/startup/sign-up']") {{ "HEADER.SIGN_UP" | translate}}
       .logged-user(*ngIf="userData")
-        .user-name
-        img([src]="userData['imageSrc'] ").user-image
+        .user-name {{userData.firstName}} {{userData.lastName}}
+        img([src]="userData['imageURL'] ").user-image
         .sign-up((click)="authService.logOut()", [routerLink]="['/startup/sign-in']") | {{ "HEADER.LOG_OUT" | translate}}
 

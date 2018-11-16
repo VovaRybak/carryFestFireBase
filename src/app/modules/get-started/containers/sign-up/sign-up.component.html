@@ -29,7 +29,7 @@
     <div class="second-step step" *ngIf="currentStep === 2">
       <div class="sign-up-header">{{ "GET_STARTED.TELL_ABOUT_YOURSELF" | translate }}</div>
       <div class="sign-up-step-form">
-        <carryFest-image-upload></carryFest-image-upload>
+        <carryFest-image-upload (uploadImage)="getImage($event)"></carryFest-image-upload>
         <mat-form-field class="sign-in-form--field">
           <input matInput="matInput" [placeholder]="'GET_STARTED.FIRST_NAME' | translate" type="text" spellcheck="false" formControlName="firstName"/>
         </mat-form-field>
@@ -46,17 +46,21 @@
       <div class="sign-up-header">{{ "GET_STARTED.WHAT_DO_YOU_DO" | translate }}</div>
       <div class="sign-up-step-form">
         <mat-form-field class="sign-in-form--field">
-          <input ngx-google-places-autocomplete="ngx-google-places-autocomplete" matInput="matInput" formControlName="lastName" [placeholder]="'Location'" [options]="{ language:&quot;ua&quot; ,componentRestrictions: {country: &quot;ua&quot;}}" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+          <input ngx-google-places-autocomplete="ngx-google-places-autocomplete" matInput="matInput" formControlName="serviceLocation" [placeholder]="'GET_STARTED.SERVICE_LOCATION' | translate" [options]="{ language:&quot;ua&quot; ,componentRestrictions: {country: &quot;ua&quot;}}" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
         </mat-form-field>
         <mat-form-field class="sign-in-form--field">
-          <input matInput="matInput" [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate"/>
+          <textarea matInput="matInput" formControlName="serviceName" [placeholder]="'GET_STARTED.SERVICE_NAME' | translate" mat-autosize="true"></textarea>
         </mat-form-field>
         <mat-form-field class="sign-in-form--field">
-          <textarea matInput="matInput" [placeholder]="'GET_STARTED.DESCRIBE' | translate" mat-autosize="true"></textarea>
+          <input matInput="matInput" formControlName="serviceType" [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate"/>
+        </mat-form-field>
+        <mat-form-field class="sign-in-form--field">
+          <textarea matInput="matInput" [placeholder]="'GET_STARTED.SERVICE_DESCRIPTION' | translate" mat-autosize="true"></textarea>
         </mat-form-field>
       </div>
       <div class="button-section">
         <button class="sign-up-form--button back" (click)="setStep(false)">{{"GET_STARTED.BACK" | translate}}</button>
+        <button class="sign-up-form--button next" (click)="sendUserData()">{{"GET_STARTED.SEND" | translate}}</button>
       </div>
     </div>
   </form>

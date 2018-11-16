@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run pug-it:w & ng serve --port 4000",
+    "start": "npm run pug-it:w & ng serve --port 4200",
     "start:w": "concurrently --kill-others \"npm run pug-it:w\" \"ng serve --port 4000\"",
     "build": "ng build --prod",
     "test": "ng test",

@@ -19,6 +19,10 @@
     "FIRST_NAME":"First name",
     "LAST_NAME": "Last name",
     "DESCRIBE": "Describe your service",
-    "SERVICE_TYPE": "Choose type of service"
+    "SERVICE_TYPE": "Choose type of service",
+    "SERVICE_LOCATION": "Location",
+    "SERVICE_DESCRIPTION": "Description",
+    "SERVICE_NAME": "Service name",
+    "SEND": "Send"
   }
 }

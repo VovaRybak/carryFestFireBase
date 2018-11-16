@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GooglePlaceDirective} from 'ngx-google-places-autocomplete';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
+import {FilesOperationsService} from '../../../../services/files-operations.service';
+import {StartupService} from '../../services/startup.service';
 
 @Component({
   selector: 'carryFest-sign-up',
@@ -11,7 +13,9 @@ import {Address} from 'ngx-google-places-autocomplete/objects/address';
 export class SignUpComponent implements OnInit {
   public currentStep: number = 1;
   public signUpForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  private locationName: string;
+
+  constructor(private formBuilder: FormBuilder, private startupService: StartupService) {
     this.createForm();
   }
 
@@ -23,7 +27,7 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       email: ['',  [Validators.required, Validators.email]],
       password: ['',  [Validators.required]],
-      firstName: ['',  [Validators.required, Validators.email]],
+      firstName: ['',  [Validators.required]],
       lastName: ['',  [Validators.required]],
       serviceName: ['',  [Validators.required]],
       serviceType: ['',  [Validators.required]],
@@ -35,8 +39,6 @@ export class SignUpComponent implements OnInit {
 
   setStep(direction: boolean) {
     direction ? this.currentStep++ : this.currentStep--;
-    console.log(document.documentElement.style.getPropertyValue('--lineWidth'));
-    console.log(Number.parseInt(document.documentElement.style.getPropertyValue('--lineWidth')));
     const prevValue = Number.parseInt(document.documentElement.style.getPropertyValue('--lineWidth'));
     const percent = (50 * (this.currentStep - 1));
     for (let i = prevValue; i !== percent; prevValue > percent ? i-- : i++ ) {
@@ -50,7 +52,16 @@ export class SignUpComponent implements OnInit {
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
   public handleAddressChange(address: Address) {
-    console.log(address);
-    // Do some stuff
+    this.locationName = address.name;
+  }
+
+  getImage(event) {
+    this.signUpForm.controls['photo'].setValue(event);
+  }
+
+  public sendUserData(): void {
+    const formValue = this.signUpForm.getRawValue();
+    console.log(formValue);
+    this.startupService.signUp(formValue);
   }
 }

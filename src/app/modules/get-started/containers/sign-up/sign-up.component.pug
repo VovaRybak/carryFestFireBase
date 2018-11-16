@@ -21,7 +21,7 @@
       .sign-up-header
         | {{ "GET_STARTED.TELL_ABOUT_YOURSELF" | translate }}
       .sign-up-step-form
-        carryFest-image-upload
+        carryFest-image-upload((uploadImage)="getImage($event)")
         mat-form-field.sign-in-form--field
           input(matInput, [placeholder]="'GET_STARTED.FIRST_NAME' | translate", type="text", spellcheck="false", formControlName="firstName" )
         mat-form-field.sign-in-form--field
@@ -34,10 +34,13 @@
         | {{ "GET_STARTED.WHAT_DO_YOU_DO" | translate }}
       .sign-up-step-form
         mat-form-field.sign-in-form--field
-          input(ngx-google-places-autocomplete, matInput, formControlName="lastName", [placeholder]="'Location'", [options]='{ language:"ua" ,componentRestrictions: {country: "ua"}}', #placesRef="ngx-places",  (onAddressChange)="handleAddressChange($event)")
+          input(ngx-google-places-autocomplete, matInput, formControlName="serviceLocation", [placeholder]="'GET_STARTED.SERVICE_LOCATION' | translate", [options]='{ language:"ua" ,componentRestrictions: {country: "ua"}}', #placesRef="ngx-places",  (onAddressChange)="handleAddressChange($event)")
         mat-form-field.sign-in-form--field
-          input(matInput, [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate")
+          textarea(matInput, formControlName="serviceName", [placeholder]="'GET_STARTED.SERVICE_NAME' | translate", mat-autosize="true" )
         mat-form-field.sign-in-form--field
-          textarea(matInput, [placeholder]="'GET_STARTED.DESCRIBE' | translate", mat-autosize="true" )
+          input(matInput,formControlName="serviceType", [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate")
+        mat-form-field.sign-in-form--field
+          textarea(matInput, [placeholder]="'GET_STARTED.SERVICE_DESCRIPTION' | translate", mat-autosize="true" )
       .button-section
         button.sign-up-form--button.back((click)="setStep(false)") {{"GET_STARTED.BACK" | translate}}
+        button.sign-up-form--button.next((click)="sendUserData()") {{"GET_STARTED.SEND" | translate}}

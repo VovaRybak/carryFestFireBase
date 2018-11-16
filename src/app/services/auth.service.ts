@@ -27,10 +27,12 @@ export class AuthService {
   }
   setAuthData(user: any): void {
     this.storeAuthData(user);
+    debugger;
     this.getUserAllInfo(user.userID);
     this.router.navigate(['me/profile']);
   }
   private getUserAllInfo(ID: string) {
+    debugger;
     this.fireBaseService.getUserByID(ID).on('value', (value) => {
       const queryResult = value.val();
       const key = Object.keys(queryResult);

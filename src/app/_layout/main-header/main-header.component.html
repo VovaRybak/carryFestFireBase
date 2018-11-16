@@ -13,7 +13,7 @@
         <div class="sign-up" [routerLink]="['/startup/sign-up']">{{ "HEADER.SIGN_UP" | translate}}</div>
       </div>
       <div class="logged-user" *ngIf="userData">
-        <div class="user-name"></div><img class="user-image" [src]="userData['imageSrc'] "/>
+        <div class="user-name">{{userData.firstName}} {{userData.lastName}}</div><img class="user-image" [src]="userData['imageURL'] "/>
         <div class="sign-up" (click)="authService.logOut()" [routerLink]="['/startup/sign-in']">| {{ "HEADER.LOG_OUT" | translate}}</div>
       </div>
     </div>

@@ -17,7 +17,7 @@ export class FirebaseService {
     this.spinner.show();
     const imageId = Math.random().toString(36).substring(2);
     this.fileOperations.uploadFile(imageId, image)
-      .then(snapshot => {
+      .subscribe(snapshot => {
         snapshot.ref.getDownloadURL()
           .then(downloadURL => {
             userInfo.imageSrc = downloadURL;
@@ -34,7 +34,7 @@ export class FirebaseService {
     this.spinner.show();
     const imageId = Math.random().toString(36).substring(2);
     this.fileOperations.uploadFile(imageId, file)
-      .then(snapshot => {
+      .subscribe(snapshot => {
         snapshot.ref.getDownloadURL()
         .then(downloadURL => {
           eventInfo.imageSrc = downloadURL;

@@ -4,11 +4,11 @@ import { GetStartedComponent } from './get-started.component';
 import {Routes, RouterModule} from '@angular/router';
 import { SignInComponent } from './containers/sign-in/sign-in.component';
 import { SignUpComponent } from './containers/sign-up/sign-up.component';
+import { StartupService } from './services/startup.service';
 import {LayoutModule} from '../../_layout/layout.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
-import {StartupService} from './services/startup.service';
 import {SharedModule} from '../../_shared/shared.module';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
