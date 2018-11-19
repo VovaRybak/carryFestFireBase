@@ -26,6 +26,8 @@
           input(matInput, [placeholder]="'GET_STARTED.FIRST_NAME' | translate", type="text", spellcheck="false", formControlName="firstName" )
         mat-form-field.sign-in-form--field
           input(matInput, [placeholder]="'GET_STARTED.LAST_NAME' | translate", type="text", spellcheck="false", formControlName="lastName" )
+        mat-form-field.sign-in-form--field
+          input(matInput, [placeholder]="'GET_STARTED.PHONE_NUMBER' | translate", type="text", spellcheck="false", formControlName="phoneNumber" )
       .button-section
         button.sign-up-form--button.back((click)="setStep(false)") {{"GET_STARTED.BACK" | translate}}
         button.sign-up-form--button.next((click)="setStep(true)") {{"GET_STARTED.NEXT" | translate}}
@@ -38,7 +40,8 @@
         mat-form-field.sign-in-form--field
           textarea(matInput, formControlName="serviceName", [placeholder]="'GET_STARTED.SERVICE_NAME' | translate", mat-autosize="true" )
         mat-form-field.sign-in-form--field
-          input(matInput,formControlName="serviceType", [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate")
+          mat-select(formControlName="serviceType", [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate")
+            mat-option(*ngFor="let service of servicesList;let index = index", [value]="index") {{ service |  translate}}
         mat-form-field.sign-in-form--field
           textarea(matInput, [placeholder]="'GET_STARTED.SERVICE_DESCRIPTION' | translate", mat-autosize="true" )
       .button-section

@@ -7,6 +7,10 @@ import { PortfolioComponent } from './containers/portfolio/portfolio.component';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutModule} from '../../_layout/layout.module';
 import {FirebaseService} from '../../services/firebase.service';
+import { UserPageHeaderComponent } from './_shared/user-page-header/user-page-header.component';
+import {TranslateModule} from '@ngx-translate/core';
+import { UserPageNavigationComponent } from './_shared/user-page-navigation/user-page-navigation.component';
+import {SharedModule} from '../../_shared/shared.module';
 
 const routes: Routes = [
   { path: 'me', component: UserPageComponent, children: [
@@ -21,19 +25,14 @@ const routes: Routes = [
   imports: [
     LayoutModule,
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslateModule,
+    SharedModule
   ],
-  declarations: [UserPageComponent, SettingsComponent, ProfileComponent, PortfolioComponent],
+  declarations: [UserPageComponent, SettingsComponent, ProfileComponent, PortfolioComponent, UserPageHeaderComponent, UserPageNavigationComponent],
   exports: [RouterModule]
 })
 export class UserPageModule {
   constructor(private firebaseService: FirebaseService) {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    this.firebaseService.getUserByID(userInfo.userID).on('value', (snapshot) => {
-      const arr = snapshot.val();
-      const key = Object.keys(arr);
-      localStorage.setItem('userInfo', JSON.stringify(Object.assign(arr[key[0]], JSON.parse(localStorage.getItem('userInfo')))));
-      sessionStorage.setItem('userInfo', JSON.stringify(Object.assign(arr[key[0]], JSON.parse(sessionStorage.getItem('userInfo')))));
-    });
   }
 }

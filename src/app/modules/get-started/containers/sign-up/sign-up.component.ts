@@ -4,6 +4,8 @@ import {GooglePlaceDirective} from 'ngx-google-places-autocomplete';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
 import {FilesOperationsService} from '../../../../services/files-operations.service';
 import {StartupService} from '../../services/startup.service';
+import {ServiceTypes} from '../../../../enums/service-types.enum';
+import {ServiceList} from '../../../../mocks/service-list';
 
 @Component({
   selector: 'carryFest-sign-up',
@@ -14,9 +16,12 @@ export class SignUpComponent implements OnInit {
   public currentStep: number = 1;
   public signUpForm: FormGroup;
   private locationName: string;
+  public servicesList;
+  public servicesListKeys;
 
   constructor(private formBuilder: FormBuilder, private startupService: StartupService) {
     this.createForm();
+    this.servicesList = ServiceList.servicesList;
   }
 
   ngOnInit() {
@@ -61,7 +66,8 @@ export class SignUpComponent implements OnInit {
 
   public sendUserData(): void {
     const formValue = this.signUpForm.getRawValue();
-    console.log(formValue);
+    formValue.serviceLocation = this.locationName;
+    formValue.backgroundImage = 'https://firebasestorage.googleapis.com/v0/b/carryfest-b0315.appspot.com/o/uploads%2Fbackground-placeholder.jpeg?alt=media&token=8d964d62-2d25-491b-8259-b5fd061c354f';
     this.startupService.signUp(formValue);
   }
 }

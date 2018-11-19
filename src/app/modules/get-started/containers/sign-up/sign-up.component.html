@@ -36,6 +36,9 @@
         <mat-form-field class="sign-in-form--field">
           <input matInput="matInput" [placeholder]="'GET_STARTED.LAST_NAME' | translate" type="text" spellcheck="false" formControlName="lastName"/>
         </mat-form-field>
+        <mat-form-field class="sign-in-form--field">
+          <input matInput="matInput" [placeholder]="'GET_STARTED.PHONE_NUMBER' | translate" type="text" spellcheck="false" formControlName="phoneNumber"/>
+        </mat-form-field>
       </div>
       <div class="button-section">
         <button class="sign-up-form--button back" (click)="setStep(false)">{{"GET_STARTED.BACK" | translate}}</button>
@@ -52,7 +55,9 @@
           <textarea matInput="matInput" formControlName="serviceName" [placeholder]="'GET_STARTED.SERVICE_NAME' | translate" mat-autosize="true"></textarea>
         </mat-form-field>
         <mat-form-field class="sign-in-form--field">
-          <input matInput="matInput" formControlName="serviceType" [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate"/>
+          <mat-select formControlName="serviceType" [placeholder]="'GET_STARTED.SERVICE_TYPE' | translate">
+            <mat-option *ngFor="let service of servicesList;let index = index" [value]="index">{{ service |  translate}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field class="sign-in-form--field">
           <textarea matInput="matInput" [placeholder]="'GET_STARTED.SERVICE_DESCRIPTION' | translate" mat-autosize="true"></textarea>

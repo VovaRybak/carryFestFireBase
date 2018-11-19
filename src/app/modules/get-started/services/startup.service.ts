@@ -36,12 +36,14 @@ export class StartupService {
         }),
         switchMap(snapshot => snapshot.ref.getDownloadURL()),
         switchMap((imageURL) => {
-          data['userId'] = this.userId;
+          data['userID'] = this.userId;
           data['imageKey'] = this.imageId;
           data['imageURL'] = imageURL;
           this.setUserData(data);
           return of(null);
-        }))
+        }),
+        switchMap(() => this.signInWithEmailAndPassword({email: data.email, password: data.password})),
+      )
       .subscribe();
   }
   public setUserData(userData: any) {

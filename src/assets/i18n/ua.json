@@ -11,5 +11,25 @@
     "SIGN_IN_HEADER": "З поверненням",
     "EMAIL": "E-mail",
     "PASSWORD": "Пароль"
+  },
+  "SERVICE_TYPES":{
+    "PHOTO": "Фотограф",
+    "VIDEO": "Відеооператор",
+    "MUSIC": "Музиканти",
+    "ACTOR": "Тамада",
+    "RESTAURANT": "Ресторан",
+    "DECORATOR": "Декоратор",
+    "CAKES": "Торти та випічка",
+    "AUTO": "Автомобілі",
+    "DRESSES": "Весільні плаття",
+    "SHOW_PROGRAMM": "Шоу програма",
+    "ORGANIZATION": "Організація",
+    "BEAUTY_SALOON": "Салон краси",
+    "FIREWORKS": "Феєрверки",
+    "ACCESSORIES": "Прокикраси",
+    "FIRST_DANCE": "Перший танець",
+    "BUFFET": "Фуршетний стіл",
+    "FLOWERS": "Флористика",
+    "REGISTRY": "РАЦС"
   }
 }

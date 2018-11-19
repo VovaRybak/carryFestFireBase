@@ -1,0 +1,20 @@
+
+<div class="container">
+  <div class="wrapper">
+    <div class="background-image" [ngStyle]="{backgroundImage: 'url('+profile?.backgroundImage+')'}"></div>
+    <div class="profile-photo">
+      <div class="profile-photo-wrapper"><img class="profile-photo-image" [src]="profile?.imageURL"/></div>
+    </div>
+    <div class="profile-info">
+      <div class="profile-info-title">{{profile?.serviceName}}</div>
+      <div class="profile-info-wrapper">
+        <div class="user-location"><i class="material-icons">location_on</i>{{profile.serviceLocation}}</div>
+        <div class="user-location"><i class="material-icons">phone</i>{{profile.phoneNumber}}</div>
+        <div class="user-location"><i class="material-icons">clear_all</i>{{serviceList[profile.serviceType] | translate}}</div>
+        <div class="user-description">Description:
+          <div class="text">{{profile.serviceDescription}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

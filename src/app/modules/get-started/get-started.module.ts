@@ -8,7 +8,7 @@ import { StartupService } from './services/startup.service';
 import {LayoutModule} from '../../_layout/layout.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
-import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {SharedModule} from '../../_shared/shared.module';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
@@ -29,6 +29,7 @@ const routes: Routes = [
     TranslateModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     GooglePlaceModule,
     SharedModule
   ],

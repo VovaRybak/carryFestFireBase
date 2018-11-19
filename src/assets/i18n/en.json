@@ -23,6 +23,27 @@
     "SERVICE_LOCATION": "Location",
     "SERVICE_DESCRIPTION": "Description",
     "SERVICE_NAME": "Service name",
+    "PHONE_NUMBER": "Phone number",
     "SEND": "Send"
+  },
+  "SERVICE_TYPES":{
+    "PHOTO": "Photographer",
+    "VIDEO": "Videographer",
+    "MUSIC": "Musician",
+    "ACTOR": "Tamada",
+    "RESTAURANT": "Restaurant",
+    "DECORATOR": "Decorator",
+    "CAKES": "Cakes and bakings",
+    "AUTO": "Cabriolet",
+    "DRESSES": "Wedding dress",
+    "SHOW_PROGRAMM": "Show program",
+    "ORGANIZATION": "Event organization",
+    "BEAUTY_SALOON": "Beauty salon",
+    "FIREWORKS": "Fireworks",
+    "ACCESSORIES": "Accessories",
+    "FIRST_DANCE": "First dance",
+    "BUFFET": "Buffet table",
+    "FLOWERS": "Floristry",
+    "REGISTRY": "Registry office"
   }
 }

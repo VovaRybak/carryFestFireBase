@@ -1,3 +1,6 @@
-<p>
-  profile works!
-</p>
+<div class="wrapper">
+  <carryFest-image-upload (uploadImage)="getImage($event)"></carryFest-image-upload>
+  <div *ngFor="let imageKey of keys">
+    <img class="image" [src]="imageList[imageKey].url" alt="">
+  </div>
+</div>
