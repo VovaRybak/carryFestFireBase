@@ -3,7 +3,9 @@
   <div class="wrapper">
     <div class="background-image" [ngStyle]="{backgroundImage: 'url('+profile?.backgroundImage+')'}"></div>
     <div class="profile-photo">
-      <div class="profile-photo-wrapper"><img class="profile-photo-image" [src]="profile?.imageURL"/></div>
+      <div class="profile-photo-wrapper">
+        <div class="profile-photo-image" [ngStyle]="{backgroundImage: 'url('+profile?.imageURL+')'}"></div>
+      </div>
     </div>
     <div class="profile-info">
       <div class="profile-info-title">{{profile?.serviceName}}</div>

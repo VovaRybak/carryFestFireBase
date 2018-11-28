@@ -25,6 +25,11 @@ export class AuthService {
     this._authData.next(userData ? userData : null);
     localStorage.setItem('userInfo', JSON.stringify(userData));
   }
+
+  private storeBaseIdentifiers(userInfo: any): void {
+    localStorage.setItem('authInfo', JSON.stringify({userKey: userInfo}));
+  }
+
   setAuthData(user: any): void {
     this.storeAuthData(user);
     this.getUserAllInfo(user.userID);
@@ -34,6 +39,7 @@ export class AuthService {
     this.fireBaseService.getUserByID(ID).on('value', (value) => {
       const queryResult = value.val();
       const key = Object.keys(queryResult);
+      this.storeBaseIdentifiers(key[0]);
       this.storeAuthData(queryResult[key[0]]);
       this.initAuthState();
     });

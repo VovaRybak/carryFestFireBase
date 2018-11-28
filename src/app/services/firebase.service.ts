@@ -34,27 +34,7 @@ export class FirebaseService {
   getUserByID(id) {
     return this.dataBase.database.ref().child('users').orderByChild('userID').equalTo(id);
   }
-  addUserImage(file) {
-    this.fileOperations.uploadFile(this.getRandomImageKey(), file)
-    .pipe(
-      switchMap(snapshot => snapshot.ref.getDownloadURL() ),
-      switchMap((imageURL) => this.addPhotoToUserAccount(this.imageId, imageURL))
-    )
-    .subscribe();
-  }
-  public addPhotoToUserAccount(key, url) {
-    this.dataBase.object('/users/' + '-LRRiNb6ZGTHr9avXdhx/photos').update({[key]: {
-      name: 1, likes: 2, url: url
-      }});
-    this.dataBase.object('/users/' + '-LRRiNb6ZGTHr9avXdhx/photos').valueChanges().subscribe((value) => {
-      console.log(value);
-    })
-    return of(null);
-  }
-  public getRandomImageKey() {
-    this.imageId = Math.random().toString(36).substring(2);
-    return this.imageId;
-  }
+
   public putEventInfo(eventInfo, file) {
     this.spinner.show();
     const imageId = Math.random().toString(36).substring(2);

@@ -11,6 +11,7 @@ import { UserPageHeaderComponent } from './_shared/user-page-header/user-page-he
 import {TranslateModule} from '@ngx-translate/core';
 import { UserPageNavigationComponent } from './_shared/user-page-navigation/user-page-navigation.component';
 import {SharedModule} from '../../_shared/shared.module';
+import {UserInfoService} from './services/user-info.service';
 
 const routes: Routes = [
   { path: 'me', component: UserPageComponent, children: [
@@ -30,7 +31,8 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [UserPageComponent, SettingsComponent, ProfileComponent, PortfolioComponent, UserPageHeaderComponent, UserPageNavigationComponent],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [UserInfoService]
 })
 export class UserPageModule {
   constructor(private firebaseService: FirebaseService) {

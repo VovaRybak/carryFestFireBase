@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {UserInfoService} from './services/user-info.service';
 
 @Component({
   selector: 'carryFest-user-page',
@@ -9,13 +10,15 @@ import {AuthService} from '../../services/auth.service';
 })
 export class UserPageComponent implements OnInit {
   public profileInfo;
-  constructor(private route: ActivatedRoute, private auth: AuthService) {
+  constructor(private route: ActivatedRoute, private auth: AuthService, private userInfoService: UserInfoService) {
     if (this.route.snapshot.routeConfig.path === 'me') {
-      this.auth._authData
-        .subscribe((authData) => this.profileInfo = authData);
-      console.log(this.profileInfo);
-      console.log(JSON.parse(localStorage.getItem('userInfo')));
+      this.userInfoService.getUserRefference().once('value', value => {
+        const querry = value.val();
+        const keys = Object.keys(querry);
+        this.profileInfo = querry[keys[0]];
+      });
     }
+
   }
 
   ngOnInit() {

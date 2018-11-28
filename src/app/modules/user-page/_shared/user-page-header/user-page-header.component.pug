@@ -3,7 +3,7 @@
     .background-image([ngStyle]="{backgroundImage: 'url('+profile?.backgroundImage+')'}")
     .profile-photo
       .profile-photo-wrapper
-        img.profile-photo-image([src]="profile?.imageURL")
+        .profile-photo-image([ngStyle]="{backgroundImage: 'url('+profile?.imageURL+')'}")
     .profile-info
       .profile-info-title {{profile?.serviceName}}
       .profile-info-wrapper

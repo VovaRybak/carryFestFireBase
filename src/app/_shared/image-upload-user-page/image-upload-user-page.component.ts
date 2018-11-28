@@ -1,12 +1,13 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
-  selector: 'carryFest-image-upload',
-  templateUrl: './image-upload.component.html',
-  styleUrls: ['./image-upload.component.scss']
+  selector: 'carryFest-image-upload-user-page',
+  templateUrl: './image-upload-user-page.component.html',
+  styleUrls: ['./image-upload-user-page.component.scss']
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadUserPageComponent implements OnInit {
+
   @Input() formControl: FormControl;
   public fileImage;
   @Input() imageInput;
@@ -24,12 +25,8 @@ export class ImageUploadComponent implements OnInit {
     this.imageInput = event.target;
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (events: any) => {
-      this.uploadedPhoto = events.target.result;
       this.uploadImage.emit(this.fileImage);
+      this.imageInput.value = '';
     };
-  }
-  removePhoto(event) {
-    this.imageInput.value = '';
-    this.uploadedPhoto = undefined;
   }
 }

@@ -1,6 +1,6 @@
 <div class="wrapper">
-  <carryFest-image-upload (uploadImage)="getImage($event)"></carryFest-image-upload>
+  <carryFest-image-upload-user-page [imageInput]="selectedImage" [uploadedPhoto]="uploadedImage" (uploadImage)="getImage($event)"></carryFest-image-upload-user-page>
   <div *ngFor="let imageKey of keys">
-    <img class="image" [src]="imageList[imageKey].url" alt="">
+    <div class="image" [ngStyle]="{backgroundImage: 'url('+imageList[imageKey].url+')'}"></div>
   </div>
 </div>

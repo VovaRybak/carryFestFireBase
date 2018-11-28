@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FirebaseService} from '../../../../services/firebase.service';
 import {AuthService} from '../../../../services/auth.service';
+import {UserInfoService} from '../../services/user-info.service';
+import {skipWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'carryFest-profile',
@@ -10,17 +12,25 @@ import {AuthService} from '../../../../services/auth.service';
 export class ProfileComponent implements OnInit {
   public imageList;
   public keys;
-  constructor(private fireBaseService: FirebaseService, private auth: AuthService) {
-    this.auth._authData.subscribe((user) => {
-      this.imageList = user.photos;
-      this.keys = Object.keys(this.imageList);
+  public selectedImage;
+  public uploadedImage;
+  constructor(private userInfoService: UserInfoService, private auth: AuthService) {
+    this.auth._authData
+      .pipe(
+        skipWhile(item => !item.photos)
+      )
+      .subscribe((user) => {
+        if (user && user.photos) {
+          this.imageList = user.photos;
+          this.keys = Object.keys(this.imageList);
+        }
     });
   }
 
   ngOnInit() {
   }
   public getImage(event) {
-    console.log(event);
-    this.fireBaseService.addUserImage(event);
+    this.userInfoService.addUserImage(event)
+      .subscribe();
   }
 }
